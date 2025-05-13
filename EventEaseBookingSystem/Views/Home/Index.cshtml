@@ -1,0 +1,31 @@
+﻿@model EventEaseBookingSystem.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1 class="mb-4">Upcoming Events</h1>
+
+@if (Model.Events.Any())
+{
+    <div class="row">
+        @foreach (var e in Model.Events)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="@e.ImageUrl" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@e.Name</h5>
+                        <p class="card-text">@e.Description</p>
+                        <p><strong>Start:</strong> @e.StartDate.ToShortDateString()</p>
+                        <p><strong>End:</strong> @e.EndDate.ToShortDateString()</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No upcoming events available.</p>
+}
